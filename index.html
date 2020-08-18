@@ -1,0 +1,1289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-04-01 Wed 19:02 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Proof for Conjecture</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Benjamin Hansen" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">document.helps = [];</script>
+<script type="text/javascript">
+function draw(levels) {
+var c = document.getElementById("btree");
+var w = c.width;
+var h = c.height;
+var ctx = c.getContext("2d");
+var repeat_delay = 3000;
+var teardown_delay = 1000;
+var level_delay = 500;
+var margins = 10;
+// If h_frac is changed, slope will need to be adjusted to
+// prevent overlap.  I might fix this in the future.
+var h_frac = 2;
+var slope = ((h - margins * 2) / 2) / (w - margins * 2);
+ctx.clearRect(0, 0, w, h);
+// This goes in here so that above variables will be in scope
+function lines(dist, loc, depth, delay=0) {
+function render_lines(dist, loc) {
+ctx.beginPath();
+ctx.moveTo(loc[0], loc[1]);
+ctx.lineTo(loc[0] + dist, loc[1] + slope * -dist);
+ctx.moveTo(loc[0], loc[1]);
+ctx.lineTo(loc[0] + dist, loc[1] + slope * dist);
+ctx.stroke();
+}
+setTimeout(render_lines, delay, dist, loc);
+setTimeout(function (x) {ctx.clearRect(x, 0, w, h)},
+level_delay * levels * 2 + teardown_delay - delay,
+loc[0]);
+depth--;
+if (depth) {
+lines((dist / h_frac) * (h_frac - 1),
+[loc[0] + dist, loc[1] + slope * -dist],
+depth,
+delay + level_delay);
+lines((dist / h_frac) * (h_frac - 1),
+[loc[0] + dist, loc[1] + slope *  dist],
+depth,
+delay + level_delay);
+}
+}
+lines((w - margins * 2) / h_frac, [margins, h/2], levels);
+setTimeout(draw, repeat_delay + teardown_delay + levels * level_delay * 2, levels);
+}
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Proof for Conjecture</h1>
+
+<div id="outline-container-orgbc00f70" class="outline-2">
+<h2 id="orgbc00f70">Abstract</h2>
+<div class="outline-text-2" id="text-orgbc00f70">
+<p>
+Today's encryption algorithms (the process of securing data) exploit
+the inability of modern computers to factorize large integers. If a
+classical algorithm can generate prime factors very quickly,
+the security of our systems would be undermined. As such, we present
+here thoughts on factoring and a theorem to prove relationships between
+factors.
+</p>
+</div>
+</div>
+<div id="outline-container-orgdc5fda2" class="outline-2">
+<h2 id="orgdc5fda2">Introduction</h2>
+<div class="outline-text-2" id="text-orgdc5fda2">
+<p>
+While delivering fast food for a restaurant, I was in my car a lot just
+thinking while I drove. Throughout 2019 I became more and more intrigued
+with factoring numbers. I had developed a computer model which factored
+numbers as fast as I knew how and over and over thought of ways to speed up
+that algorithm. It did well, but when the numbers were in the billions to trillions, it
+took an insane amount of time to factor. Usually with numbers that large, I never
+saw the algorithm complete.
+</p>
+
+<p>
+This work is built off the wonderful ideas of discrete mathematics I learned in my Discrete
+Mathematics I &amp; II classes at BYU-Idaho. Much thanks to Professor Lee Barney and Professor Rick Neff for teaching
+me mathematics in such a way that has left my mind pondering and hungering for more.
+</p>
+
+<p>
+On my food deliveries, I thought of different operations that could be performed to
+compute the factors of a number.
+</p>
+</div>
+
+
+
+<div id="outline-container-orgf635715" class="outline-3">
+<h3 id="orgf635715">Given a natural number \(n\)</h3>
+<div class="outline-text-3" id="text-orgf635715">
+<p>
+The following algorithms list my attempts and the number of critical operations performed to compute the factors
+of a number. By critical I mean operations like division, modulus, multiplication, and arithmetic with
+values greater than 1. Adding or subtracting one to a value is a very quick process and will not be reported.
+At the beginning, each attempt explains a brief overview of the algorithm.
+</p>
+
+<p>
+NOTE these quantity amounts for how many operations performed are for factoring a number instead of
+finding the prime factorization of a number. Also, the operations to save the factors of the number when
+found are not included, yet may be discussed in the summary.
+The nitty-gritty operations of computing those factors is the main performance bottleneck.
+</p>
+</div>
+
+<div id="outline-container-orgdac4294" class="outline-4">
+<h4 id="orgdac4294">To get the next factor</h4>
+<div class="outline-text-4" id="text-orgdac4294">
+<p>
+<b>First attempt</b>
+</p>
+
+<p>
+<i>Summary:</i> Start with potential factor \(f\) at \(n\). If \(f\) mod \(n = 0\), meaning f divides n, (written as \(f | n\)),
+then \(f\) is a factor of \(n\). Decrement \(f\) by one each time until \(f = 1\) and that is the last factor of \(n\).
+</p>
+
+<p>
+<i>Critical Operations:</i>
+</p>
+<ul class="org-ul">
+<li>\(n \) &minus; \(1\) modulo operations</li>
+<li>\(n \) &minus; \(1\) condition checks</li>
+<li>\(n\) iterations</li>
+</ul>
+
+<p>
+<b>Second attempt</b>
+</p>
+
+<p>
+<i>Summary:</i> Start with potential factor \(f\) at \(\lfloor\frac{n}{2}\rfloor\). If \(f\) mod \(n = 0\), meaning f divides n, (written as \(f | n\)),
+then \(f\) is a factor of \(n\). To get it's counterpart factor, the value where \(f\cdot x\) for some integer \(x\) equals \(n\), integer divide
+\(n\) by \(f\). Since \(f\) is a factor in this iteration, \(\frac{n}{f}\) will produce the same value as the integer division.
+Decrement \(f\) by one each time until \(\frac{n}{f} \gt f\), which means we have found all the factor pairs.
+</p>
+
+<p>
+<i>Critical Operations:</i>
+</p>
+<ul class="org-ul">
+<li>\(1\) integer divide</li>
+<li>\(\lfloor\frac{n}{2}\rfloor\) &minus; \(1\) modulo operations</li>
+<li>\(\lfloor\frac{n}{2}\rfloor\) floating-point divisions</li>
+<li>\(2\lfloor\frac{n}{2}\rfloor\) condition checks</li>
+<li>\(\lfloor\frac{n}{2}\rfloor\) iterations</li>
+</ul>
+
+<p>
+<b>Third attempt</b>
+</p>
+
+<p>
+<i>Summary:</i> Start with potential factor \(f\) at \(\lfloor\sqrt{n}\rfloor\). If \(f\) mod \(n = 0\), meaning f divides n, (written as \(f | n\)),
+then \(f\) is a factor of \(n\). To get it's counterpart factor, the value where \(f\cdot x\) for some integer \(x\) equals \(n\), integer divide
+\(n\) by \(f\). Since \(f\) is a factor in this iteration, \(\frac{n}{f}\) will produce the same value as the integer division.
+Decrement \(f\) by one each time until \(f = 1\), which is the last factor.
+</p>
+
+<p>
+<i>Critical Operations:</i>
+</p>
+<ul class="org-ul">
+<li>\(1\)  \(\sqrt{n}\) computation</li>
+<li>\(1\) truncation of a floating-point value</li>
+<li>\(\lfloor\sqrt{n}\rfloor\) &minus; \(1\) modulo operations</li>
+<li>\(\lfloor\sqrt{n}\rfloor\) &minus; \(1\) condition checks</li>
+<li>\(\lfloor\sqrt{n}\rfloor\) iterations</li>
+</ul>
+
+<p>
+<b>Fourth attempt</b>
+</p>
+
+<p>
+<i>Summary:</i> Start with potential factor \(f\) at \(\lfloor\sqrt{n}\rfloor\). If \(\frac{n}{f}\) when truncated (meaning all decimals are chopped off
+making the decimal a whole number) has the same value as \(\frac{n}{f}\), then \(f | n\) and is a factor. The division
+is the counterpart factor.
+Decrement \(f\) by one each time until \(f = 1\), which is the last factor.
+</p>
+
+<p>
+<i>Critical Operations:</i>
+</p>
+<ul class="org-ul">
+<li>\(1\)  \(\sqrt{n}\) computation</li>
+<li>\(\lfloor\sqrt{n}\rfloor\) &minus; \(1\) floating-point division</li>
+<li>\(\lfloor\sqrt{n}\rfloor\) truncations of a floating-point value</li>
+<li>\(\lfloor\sqrt{n}\rfloor\) &minus; \(1\) condition checks</li>
+<li>\(\lfloor\sqrt{n}\rfloor\) iterations</li>
+</ul>
+
+<p>
+<b>Final attempt</b>
+</p>
+
+<p>
+<i>Summary:</i> This is the algorithm I have been and will be talking the most about. It goes like this.
+Everything will be retained as fractions using fractional arithmetic instead of floating-point arithmetic.
+Later I will give an explanation how I held the fractions. Start \(y_k\) at \(\frac{n}{1}\). \(k\) will go from
+\(1\) to \(\lfloor\sqrt{n}\rfloor\) and this algorithm will relate \(y_k\) to k, as counterpart factor pairs of \(n\). To check if
+\(y_k\) is a factor with counterpart factor \(k\), check if the numerator in \(y_k\) is divisible by its denominator.
+If so, evaluate the fraction using integer division to get the integer factor of \(y_k\). That means \(k\) is also a factor.
+The next potential factor, \(y_{k+1} = y_k\) &minus; \(\frac{y_k}{k+1}\), which you will see proven later. Each \(y_k = y_{k-1} \) &minus; \(\frac{y_{k-1}}{k}\).
+Continue checking if the next \(y_k\) computed is a factor. Go until \(y_k\) has a numerator that is less than the denominator.
+That will denote that \(k \gt \lfloor\sqrt{n}\rfloor\) and we are done factoring.
+</p>
+
+<p>
+<i>Critical Operations:</i>
+</p>
+<ul class="org-ul">
+<li>\(\lfloor\sqrt{n}\rfloor\times5 + 1\) multiplications</li>
+<li>\(2\lfloor\sqrt{n}\rfloor\) condition checks</li>
+<li>\(\lfloor\sqrt{n}\rfloor\) &minus; \(1\) modulo operations</li>
+<li>\(\lfloor\sqrt{n}\rfloor\) &minus; \(1\) integer division operations</li>
+<li>\(\lfloor\sqrt{n}\rfloor\) iterations</li>
+</ul>
+
+<p>
+We will summarize the results of this final attempt later and explain its limitations.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3e5c7b9" class="outline-2">
+<h2 id="org3e5c7b9">Theorem and Proof</h2>
+<div class="outline-text-2" id="text-org3e5c7b9">
+<p>
+Author: Benjamin Hansen
+</p>
+</div>
+<div id="outline-container-orgdec0019" class="outline-3">
+<h3 id="orgdec0019">Theorem</h3>
+<div class="outline-text-3" id="text-orgdec0019">
+<p>
+Let \(n \in \mathbb{n}\) For \(k\) = 1, &hellip;, \(\lfloor\sqrt{n}\rfloor\), let \(a_k\) be the real number
+such that \(a_{k}k = n\). The numbers \(a_1, a_2, \dots, a_{\lfloor\sqrt{n}\rfloor}\) satisfy the recurrence relation
+</p>
+
+<p>
+\(a_k = a_{k-1} \)&minus;\( \frac{a_{k-1}}{k}\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2c2b1c5" class="outline-3">
+<h3 id="org2c2b1c5"><i>Proof</i></h3>
+<div class="outline-text-3" id="text-org2c2b1c5">
+<p>
+By definition, \(a_{k}k = n\) and \(a_{k-1}(k-1)=n\) and thus \(a_k k=a_{k-1}(k-1)\).
+Dividing both sides by \(k\) gives \(a_k = \frac{k-1}{k}a_{k-1} = (1\) &minus; \(\frac{1}{k})a_{k-1} = a_{k-1}\) &minus; \(\frac{a_{k-1}}{k}. \square\)
+</p>
+</div>
+
+<div id="outline-container-orgbf10350" class="outline-4">
+<h4 id="orgbf10350">Acknowledgements:</h4>
+<div class="outline-text-4" id="text-orgbf10350">
+<p>
+Thanks to Professor Curtis Nelson for his refinements and feedback on the statement and proof.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org82180e0" class="outline-2">
+<h2 id="org82180e0">Motivation</h2>
+<div class="outline-text-2" id="text-org82180e0">
+<p>
+As you can see, the final attempt algorithm takes considerable more operations. It is by far the slowest of them all.
+I will admit that. But, what we learn from this algorithm can enhance our understanding and uncover
+insights into the relationships of numbers that we have not before seen or considered.
+</p>
+
+<p>
+Factoring is all about finding relationships between numbers. This algorithm I will propose, the slowest attempt, shows us
+the following relationships between numbers.
+</p>
+
+<p>
+Given some natural number \(n\), lets say we wanted to find the real number \(y\) needed such that \(x \cdot y = n\) for
+counting values of \(x\) from 1 to the \(\lfloor\sqrt{n}\rfloor\). Lets consider an example:
+</p>
+</div>
+
+<div id="outline-container-org9cfb27b" class="outline-3">
+<h3 id="org9cfb27b">Example</h3>
+<div class="outline-text-3" id="text-org9cfb27b">
+<p>
+Let \(n = 36\). I want to find the value needed such that
+</p>
+
+<p>
+\(1 \cdot y_1 = n\) and
+</p>
+
+<p>
+\(2 \cdot y_2 = n\) and
+</p>
+
+<p>
+\(3 \cdot y_3 = n\) and
+</p>
+
+<p>
+\(4 \cdot y_4 = n\) and
+</p>
+
+<p>
+\(5 \cdot y_5 = n\) and
+</p>
+
+<p>
+\(6 \cdot y_6 = n\).
+</p>
+
+<p>
+Well, I can just compute \(\frac{n}{1}, \frac{n}{2}, ..., \frac{n}{6}\) to find the values of \(y_k\) where \(k = 1, 2, ..., \lfloor\sqrt{n}\rfloor\).
+</p>
+
+<p>
+But what if there was some interesting relationship between those values of \(y_k\) - that I could find the next value
+\(y_{k+1} \) without needing to even use \(n\) in my equation?
+</p>
+
+<p>
+There is a way! Take the previous \(y_{k-1}\) and subtract the division of \(y_{k-1}\) by \(k, k\) being the integer counting value below the square root of \(n\).
+</p>
+
+<p>
+\(y_{k} = y_{k-1} \) &minus; \(\frac{y_{k-1}}{k}\).
+</p>
+
+<p>
+Where do we start for our value of \(y_k\)? \(y_1 = \frac{n}{1} = n\) which should hopefully seem obvious.
+</p>
+
+<p>
+That is all we need to get this recurrence relation going. A recurrence relation is a recursive relation where
+the next value can be computed based on the previous values. Unlike functions like \(\sin{x}\) where they don't
+require knowledge of previous values computed, recurrences relations have the form
+</p>
+
+<p>
+\(a_{k} = c \cdot a_{k-1} + b\) or something with the previously value generating the next value.
+</p>
+
+<p>
+Our recurrence relation is
+</p>
+
+<p>
+\(y_{k} = y_{k-1} \) &minus; \(\frac{y_{k-1}}{k}\).
+</p>
+
+<p>
+Let's see it work for our example.
+</p>
+
+<p>
+\(y_2 = y_1\) &minus; \(\frac{y_1}{2} = 36\) &minus; \(\frac{36}{2} = 18\).
+</p>
+
+<p>
+\(y_3 = y_2\) &minus; \(\frac{y_2}{3} = 18\) &minus; \(\frac{18}{3} = 18\) &minus; \(6 = 12\), and sure enough \(3 \cdot 12 = 36\)
+</p>
+
+<p>
+\(y_{4} = y_3\) &minus; \(\frac{y_3}{4} = 12\) &minus; \(\frac{12}{4} = 12\) &minus; \(3 = 9\), and sure enough \(4 \cdot 9 = 36\)
+</p>
+
+<p>
+\(y_5 = y_4\) &minus; \(\frac{y_4}{5} = 9\) &minus; \(\frac{9}{5} = 7\frac{1}{5}\), and sure enough \(5 \cdot 7\frac{1}{5} = 36\)
+</p>
+
+<p>
+\(y_6 = y_5\) &minus; \(\frac{y_5}{6} = 7\frac{1}{5}\) &minus; \(\frac{7\frac{1}{5}}{6} = 7\frac{1}{5}\) &minus; \(\frac{36}{30} = 6\), and sure enough \(6 \cdot 6 = 36\)
+</p>
+
+<p>
+Isn't that fascinating? It seemed like magic to me at first. But the more I thought about it and tried to prove it in my mind and in writing,
+the more basic the problem became. It became more and more obvious that this recurrence works. But at first, this algorithm seemed like
+a gold mine that hadn't been discovered before!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org20effe9" class="outline-3">
+<h3 id="org20effe9">Relationships Uncovered - Usefulness</h3>
+<div class="outline-text-3" id="text-org20effe9">
+<p>
+From this algorithm and theorem we uncover some interesting relationships:
+</p>
+<ul class="org-ul">
+<li><p>
+The next integer in the counting sequence up to \(\lfloor\sqrt(n)\rfloor\) has a scalar value
+\(y_k\) where \(y_k = y_{k-1} \) &minus; \(\frac{y_{k-1}}{k}\) where \(y_k\) and \(k\) were defined early.
+</p>
+
+<p>
+<i>Remark:</i> This is interesting because usually we think of possible factors or multiplication values (\(k \cdot y_k\) needed to equal a certain value \(n\)
+as usually found by just dividing \(n\) by \(k\). Now we have another relationship in our tool belt of mathematical facts that the
+next value has a scalar multiple of \(y_{k-1}\) &minus; \(\frac{y_{k-1}}{k}\) with no need to know the value of \(n\).
+</p></li>
+
+<li><p>
+If \(y_k\) is an integer (whole number), then we are guaranteed that \(y_k\) is a factor of \(n\).
+</p>
+
+<p>
+<i>Remark:</i> This is what really intrigued me at first. Who would have thought that through this recurrence algorithm, you can find all the factors
+of a number. It was extremely weird and fascinating to me. The algorithm goes about computing numbers in the middle of the algorithm that
+don't even seem related to \(n\). And indeed, if someone just saw values of \(y_k\) without knowing where they came from, they would have no clue
+like me how they relate to a common number. Yet, majestically from fractions arise whole number factors of \(n\). Though we may hit a long
+run of non-factors of a number through this algorithm (like say \(n = 124897238\)), this algorithm will produce every whole number factor of 124897238
+only using 124897238 for one iteration, the first iteration.
+</p></li>
+
+<li><p>
+A prime number \(p\) will have no whole number values for \(y_k\) except \(y_1\).
+</p>
+
+<p>
+<i>Remark:</i> I am greatly interested in prime numbers and uncovering relationships about them that may unlock doors to finding quicker methods
+of doing computation with prime numbers or factorizing them. The RSA Cryptosystem is what keeps our technology world secure today. It exploits
+the inability of a modern computer to factor very large integers (thousands of digits long). Thus, if an algorithm can factor numbers by computation
+instead of iteration (looping through a bunch of values to find possible answers), then our security systems will vanish in safety. Many bright
+minds have put their heads into trying to find such quick algorithms for finding prime factorizations but no one has been able to find
+some quick formula that will generate the prime factor.
+</p>
+
+<p>
+<i>Aside:</i> Prime factorization is a number theory algorithm which finds the prime factors of a number. For example, 15 can be written as the
+product of two prime factors: 5 and 3. 36 can be written as \(2 \cdot 2 \cdot 3 \cdot 3 = 2^2 \cdot 3^2\).
+</p></li>
+
+<li><p>
+The last \(y_k\) before \(k \gt \lfloor\sqrt{n}\rfloor\) will be a very rough yet close estimate of the \(\lfloor\sqrt{n}\rfloor\).
+</p>
+
+<p>
+<i>Remark:</i> As you may have noticed, two of the other factoring attempts use the \(\sqrt{n}\). If you look into the code though, the algorithms compute
+the square root, creating some decimal value, only to truncate the decimal digits and create a whole number. This algorithm doesn't use the slow
+operations of square root and division to compute the next \(y_k\). It only uses multiplication and subtraction, which I think is an interesting
+combination. Remember, division is just repeated subtraction as multiplication is just repeated addition.
+</p>
+
+<p>
+The algorithm I found computes the integer square root when the final fraction \(y_k\) is evaluated using integer division. I
+tried this out for values 1 - 100 and the algorithm correctly computed the integer square root of that value. What's interesting
+is that it does so without using the square root or checking if the integer square root worked. This makes sense because the stopping
+condition, explained below, happens naturally when our \(k\) counter goes above the
+\(\sqrt{n}\). Thus the last \(k\) is the integer square root of \(n\) and \(y_k\) is also the integer square root of \(n\).
+</p>
+
+<p>
+If this algorithm can be enhanced, it will be faster than the floating-point square root algorithm. All factors of a number, both prime or not, can be found
+by iterating over values of \(y_k\) without needing to compute \(\lfloor\sqrt{n}\rfloor\).
+</p></li>
+
+<li><p>
+Easy stopping condition. To stop, all we need to check is if the fraction \(y_k\) is less than 1 (meaning the denominator is
+greater than the numerator.
+</p>
+
+<p>
+<i>Remark:</i> The computer model I used mainted absolute precision by representing the \(y_k\) values as fractions instead
+of a floating-point value. This means that instead of round off errors (because computers only hold a finite number of decimals)
+the arithmetic operations are exact because any fractions are not evaluated (turned into a decimal value). The arithmetic
+of \(y_k = y_{k-1} - \frac{y_{k-1}}{k}\) is held precise, as fractions, until the last \(y_k\) when then and only then we evaluate the fraction.
+That final evaluation is a very rough estimate of the square root of \(n\) and when truncated, as explained previously using integer division,
+produces the integer square root of the number.
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd8ccb78" class="outline-2">
+<h2 id="orgd8ccb78">Computer Model</h2>
+<div class="outline-text-2" id="text-orgd8ccb78">
+<p>
+The following code are the methods and the attempts created to speed up factoring numbers. The programming language
+is Erlang, a popular highly-scalable, massively parallel programming system.
+</p>
+
+<p>
+It calls functions in a fractions module (library) that is imported at the top. I created this and will
+include the functions after this code block.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-erlang">-export([sum_of_factors/1,f/1,with_subtraction/1,fact_below_n/1,highest_factor/1,factors_of/1,fact/1,with_sub/1,sub_factoring/1,fact1/1]). %%%% Make fact() faster
+-import(fractions, [sub/2,divide/2, eval/1, den_le_num/1, is_whole_then_divide/1]).
+
+%%%%% Slow Algorithm. First Attempt
+%% Just a list, let's put them in tuples above
+factors_of(N) -&gt; factors_of(N, N, []).
+
+%% param: 1st is what is being divided, 2nd is what are we dividing by, 3rd is the list of Factors we are generating from N to 1.
+factors_of(_, 1, Factors) -&gt;
+    [1|Factors];
+factors_of(Dividend, Divisor, Factors) when Dividend rem Divisor == 0 -&gt;
+factors_of(Dividend, Divisor - 1, [Divisor|Factors]);
+factors_of(Dividend, Divisor, Factors) -&gt;
+factors_of(Dividend, Divisor - 1, Factors).
+
+%% Second Attempt
+%% Call tail recursive fact function giving it N (to be factored),
+%% N div 2 "or floor division 2", and the empty set
+%% Why floor division two? Because every number N will have at least a
+%% factor of N div 2 because 2 * the biggest number possible that divides N
+%% will be the biggest factor possible
+fact1(N) when N &gt; 0 -&gt; fact1(N, N div 2, [{1,N}|[]]).
+
+%% when the Dividend divided by the Divisor has become greater
+%% than the Divisor, we know we're done factoring, no more tuples to find
+fact1(Dividend, Divisor, Factors) when Dividend / Divisor &gt; Divisor -&gt;
+Factors;
+%% when the Divisor evenly divides the dividend
+fact1(Dividend, Divisor, Factors) when Dividend rem Divisor == 0 -&gt;
+fact1(Dividend, Divisor - 1,
+     [{Dividend div Divisor, Divisor}|Factors]);
+%% else keep going
+fact1(Dividend, Divisor, Factors) -&gt;
+fact1(Dividend, Divisor - 1, Factors).
+
+%% Third Attempt
+%% Call tail recursive fact function giving it N (to be factored),
+%% N div 2 "or floor division 2", and the empty set
+%% Why floor division two? Because every number N will have at least a
+%% factor of N div 2 because 2 * the biggest number possible that divides N
+%% will be the biggest factor possible
+%%
+%% Actually!! An even quicker algorithm... any number if we consider each factor
+%% with its pair that evenly multiplies to N, then any factor can be found by
+%% testing divisors less than or equal to the square root of N
+%% Truncate the square root to get rid of any floating point decimals.
+fact(N) -&gt; fact(N, trunc(math:sqrt(N)), [{1,N}|[]]).
+
+%% When The Divisor has reached one, we're done. We already put 1 as a Factor
+fact(_,1,Factors) -&gt; lists:sort(Factors); %% Call sort which with tuples will sort by the first place in the tuple
+
+%% when the Divisor evenly divides the dividend
+fact(Dividend, Divisor, Factors) when Dividend rem Divisor == 0 -&gt;
+fact(Dividend, Divisor - 1,
+     [{Divisor, Dividend div Divisor}|Factors]);
+%% else keep going
+fact(Dividend, Divisor, Factors) -&gt;
+fact(Dividend, Divisor - 1, Factors).
+
+%% Fourth Attempt
+%% Use / and truncate instead of div and rem to generate factors.
+%% Our hope is this is faster
+%% All factors of a number can be found starting at its square root down to 1
+f(N) -&gt; f(N,trunc(math:sqrt(N)),[]).
+
+f(N,1,List) -&gt; lists:sort([{1,N}|List]);
+
+f(N,PotentialFactor,List) -&gt;
+%% Get the division
+Division = N / PotentialFactor,
+Trunc = trunc(Division),
+%% If the divisor is a potential factor of N then like 36 / 4 = 9.0 then
+%% trunc(9.0) to 9 == 9.0
+case Trunc == Division of
+%% It is a factor
+true -&gt; f(N,PotentialFactor - 1,[{PotentialFactor,Trunc}|List]);
+_    -&gt; f(N,PotentialFactor - 1,List)
+end.
+
+%% Final attempt
+%% A better way to do with_subtraction() that uses the fraction library we are creating
+%% A recursive algorithm which recurses integer factors up to the square root of a number
+%% x_i*y_i = n
+%% y_i = y_i-1 - y_i-1/x_i
+%% When do we stop? When we encounter an invalid solution, namely x_i &gt; √n
+%% But we compute that (because we're defining a alternate way of computing the square root)
+%% as the numerator of y_i-1 / x_i is less than the denominator
+with_sub(N) -&gt;
+    io:format("Beginning ~w ...~n", [N]),
+    with_sub(2, {N, 1}). % x_0 = 2, y_0 = N
+
+%% This is the previous Y not Y - 1.
+%% Calculate Y and check if it is a valid solution
+with_sub(X_i, Y_i_minus_1) -&gt;
+    io:format("X_i: ~w, Y_i-1: ~w~n", [X_i, Y_i_minus_1]),
+    io:format("Evaluated Y_i-1: ~w~n", [eval(Y_i_minus_1)]),
+    %io:fread("Keep Going ~w~n", [X_i]),
+    %% Compute the initial step to see if it is a valid solution
+    Y_divided = divide(Y_i_minus_1, X_i), % y_i-1 / x_i
+    %% While the the denominator is less than or equal to the numerator,
+    %% we still have plausible integer fractions below the square root of n
+    %% So keep going
+    %% Check the proposed division
+    case den_le_num(Y_divided) of
+        %% Continue recursing
+        %% x_i+1 = x_i + 1
+        %% y_i = y_i-1/x_i
+        true -&gt; with_sub(X_i + 1, sub(Y_i_minus_1, Y_divided)); % y_i-1 - y_i-1/x_i
+        %% Else return the estimated square root!
+        _    -&gt; eval(Y_i_minus_1)
+    end.
+
+%% A better way to do with_subtraction() that uses the fraction library we are creating
+%% A recursive algorithm which recurses integer factors up to the square root of a number
+%% x_i*y_i = n
+%% y_i = y_i-1 - y_i-1/x_i
+%% When do we stop? When we encounter an invalid solution, namely x_i &gt; √n
+%% But we compute that (because we're defining a alternate way of computing the square root)
+%% as the numerator of y_i-1 / x_i is less than the denominator
+sub_factoring(N) -&gt;
+    io:format("Beginning ~w ...~n", [N]),
+    %% Pass in the empty list to build our list of factors off of
+    %% First obvious factor is 1 and itself
+    %% Put them in pairs
+    sub_factoring(2, {N, 1}, [{1,N}]). % x_0 = 2, y_0 = N
+
+%% This is the previous Y not Y - 1.
+%% Calculate Y and check if it is a valid solution
+%% Receive a list of factors to add too
+sub_factoring(X_i, Y_i_minus_1, Factors) -&gt;
+    io:format("X_i: ~w, Y_i-1: ~w~n", [X_i, Y_i_minus_1]),
+    io:format("Evaluated Y_i-1: ~w~n", [eval(Y_i_minus_1)]),
+    %io:fread("Keep Going ~w~n", [X_i]),
+    %% Compute the initial step to see if it is a valid solution
+    Y_divided = divide(Y_i_minus_1, X_i), % y_i-1 / x_i
+    %% While the the denominator is less than or equal to the numerator,
+    %% we still have plausible integer fractions below the square root of n
+    %% So keep going
+    %% Check the proposed division
+    case den_le_num(Y_divided) of
+        %% Continue recursing
+        %% x_i+1 = x_i + 1
+        true -&gt; % if the case fails, Y_i will not be a factor of N
+            %% y_i = y_i-1 - y_i-1/x_i = y_i-1 - y_divided
+            Y_i = sub(Y_i_minus_1, Y_divided),
+            case is_whole_then_divide(Y_i) of
+                %% If zero is returned, the whole number condition check failed
+                %% So don't add the factor
+                0 -&gt; sub_factoring(X_i + 1, Y_i, Factors); % y_i-1 - y_i-1/x_i
+                %% Else a whole number is returned, the counterpart factor to x_i where x_i * y_i = n!
+                %% Add the tuple pair to the factor list
+                Y_i_whole -&gt; sub_factoring(X_i + 1, Y_i, [{X_i, Y_i_whole}|Factors]) % y_i-1 - y_i-1/x_i
+            end;
+        %% Else return the Factors of N
+        _    -&gt; Factors
+    end.
+  -module(factors).
+-export([sum_of_factors/1,f/1,with_subtraction/1,fact_below_n/1,highest_factor/1,factors_of/1,fact/1,with_sub/1,sub_factoring/1,fact1/1]). %%%% Make fact() faster
+-import(fractions, [sub/2,divide/2, eval/1, den_le_num/1, is_whole_then_divide/1]).
+
+%%%%% Slow Algorithm. First Attempt
+%% Just a list, let's put them in tuples above
+factors_of(N) -&gt; factors_of(N, N, []).
+
+%% param: 1st is what is being divided, 2nd is what are we dividing by, 3rd is the list of Factors we are generating from N to 1.
+factors_of(_, 1, Factors) -&gt;
+[1|Factors];
+factors_of(Dividend, Divisor, Factors) when Dividend rem Divisor == 0 -&gt;
+factors_of(Dividend, Divisor - 1, [Divisor|Factors]);
+factors_of(Dividend, Divisor, Factors) -&gt;
+factors_of(Dividend, Divisor - 1, Factors).
+
+%% Second Attempt
+%% Call tail recursive fact function giving it N (to be factored),
+%% N div 2 "or floor division 2", and the empty set
+%% Why floor division two? Because every number N will have at least a
+%% factor of N div 2 because 2 * the biggest number possible that divides N
+%% will be the biggest factor possible
+fact1(N) when N &gt; 0 -&gt; fact1(N, N div 2, [{1,N}|[]]).
+
+%% when the Dividend divided by the Divisor has become greater
+%% than the Divisor, we know we're done factoring, no more tuples to find
+fact1(Dividend, Divisor, Factors) when Dividend / Divisor &gt; Divisor -&gt;
+Factors;
+%% when the Divisor evenly divides the dividend
+fact1(Dividend, Divisor, Factors) when Dividend rem Divisor == 0 -&gt;
+fact1(Dividend, Divisor - 1,
+     [{Dividend div Divisor, Divisor}|Factors]);
+%% else keep going
+fact1(Dividend, Divisor, Factors) -&gt;
+fact1(Dividend, Divisor - 1, Factors).
+
+%% Third Attempt
+%% Call tail recursive fact function giving it N (to be factored),
+%% N div 2 "or floor division 2", and the empty set
+%% Why floor division two? Because every number N will have at least a
+%% factor of N div 2 because 2 * the biggest number possible that divides N
+%% will be the biggest factor possible
+%%
+%% Actually!! An even quicker algorithm... any number if we consider each factor
+%% with its pair that evenly multiplies to N, then any factor can be found by
+%% testing divisors less than or equal to the square root of N
+%% Truncate the square root to get rid of any floating point decimals.
+fact(N) -&gt; fact(N, trunc(math:sqrt(N)), [{1,N}|[]]).
+
+%% When The Divisor has reached one, we're done. We already put 1 as a Factor
+fact(_,1,Factors) -&gt; lists:sort(Factors); %% Call sort which with tuples will sort by the first place in the tuple
+
+%% when the Divisor evenly divides the dividend
+fact(Dividend, Divisor, Factors) when Dividend rem Divisor == 0 -&gt;
+fact(Dividend, Divisor - 1,
+     [{Divisor, Dividend div Divisor}|Factors]);
+%% else keep going
+fact(Dividend, Divisor, Factors) -&gt;
+fact(Dividend, Divisor - 1, Factors).
+
+%% Fourth Attempt
+%% Use / and truncate instead of div and rem to generate factors.
+%% Our hope is this is faster
+%% All factors of a number can be found starting at its square root down to 1
+f(N) -&gt; f(N,trunc(math:sqrt(N)),[]).
+
+f(N,1,List) -&gt; lists:sort([{1,N}|List]);
+
+f(N,PotentialFactor,List) -&gt;
+%% Get the division
+Division = N / PotentialFactor,
+Trunc = trunc(Division),
+%% If the divisor is a potential factor of N then like 36 / 4 = 9.0 then
+%% trunc(9.0) to 9 == 9.0
+case Trunc == Division of
+%% It is a factor
+true -&gt; f(N,PotentialFactor - 1,[{PotentialFactor,Trunc}|List]);
+_    -&gt; f(N,PotentialFactor - 1,List)
+end.
+
+%% Final attempt
+%% A better way to do with_subtraction() that uses the fraction library we are creating
+%% A recursive algorithm which recurses integer factors up to the square root of a number
+%% x_i*y_i = n
+%% y_i = y_i-1 - y_i-1/x_i
+%% When do we stop? When we encounter an invalid solution, namely x_i &gt; √n
+%% But we compute that (because we're defining a alternate way of computing the square root)
+%% as the numerator of y_i-1 / x_i is less than the denominator
+with_sub(N) -&gt;
+    io:format("Beginning ~w ...~n", [N]),
+    with_sub(2, {N, 1}). % x_0 = 2, y_0 = N
+
+%% This is the previous Y not Y - 1.
+%% Calculate Y and check if it is a valid solution
+with_sub(X_i, Y_i_minus_1) -&gt;
+    io:format("X_i: ~w, Y_i-1: ~w~n", [X_i, Y_i_minus_1]),
+    io:format("Evaluated Y_i-1: ~w~n", [eval(Y_i_minus_1)]),
+    %io:fread("Keep Going ~w~n", [X_i]),
+    %% Compute the initial step to see if it is a valid solution
+    Y_divided = divide(Y_i_minus_1, X_i), % y_i-1 / x_i
+    %% While the the denominator is less than or equal to the numerator,
+    %% we still have plausible integer fractions below the square root of n
+    %% So keep going
+    %% Check the proposed division
+    case den_le_num(Y_divided) of
+        %% Continue recursing
+        %% x_i+1 = x_i + 1
+        %% y_i = y_i-1/x_i
+        true -&gt; with_sub(X_i + 1, sub(Y_i_minus_1, Y_divided)); % y_i-1 - y_i-1/x_i
+        %% Else return the estimated square root!
+        _    -&gt; eval(Y_i_minus_1)
+    end.
+
+%% A better way to do with_subtraction() that uses the fraction library we are creating
+%% A recursive algorithm which recurses integer factors up to the square root of a number
+%% x_i*y_i = n
+%% y_i = y_i-1 - y_i-1/x_i
+%% When do we stop? When we encounter an invalid solution, namely x_i &gt; √n
+%% But we compute that (because we're defining a alternate way of computing the square root)
+%% as the numerator of y_i-1 / x_i is less than the denominator
+sub_factoring(N) -&gt;
+    io:format("Beginning ~w ...~n", [N]),
+    %% Pass in the empty list to build our list of factors off of
+    %% First obvious factor is 1 and itself
+    %% Put them in pairs
+    sub_factoring(2, {N, 1}, [{1,N}]). % x_0 = 2, y_0 = N
+
+%% This is the previous Y not Y - 1.
+%% Calculate Y and check if it is a valid solution
+%% Receive a list of factors to add too
+sub_factoring(X_i, Y_i_minus_1, Factors) -&gt;
+    io:format("X_i: ~w, Y_i-1: ~w~n", [X_i, Y_i_minus_1]),
+    io:format("Evaluated Y_i-1: ~w~n", [eval(Y_i_minus_1)]),
+    %io:fread("Keep Going ~w~n", [X_i]),
+    %% Compute the initial step to see if it is a valid solution
+    Y_divided = divide(Y_i_minus_1, X_i), % y_i-1 / x_i
+    %% While the the denominator is less than or equal to the numerator,
+    %% we still have plausible integer fractions below the square root of n
+    %% So keep going
+    %% Check the proposed division
+    case den_le_num(Y_divided) of
+        %% Continue recursing
+        %% x_i+1 = x_i + 1
+        true -&gt; % if the case fails, Y_i will not be a factor of N
+            %% y_i = y_i-1 - y_i-1/x_i = y_i-1 - y_divided
+            Y_i = sub(Y_i_minus_1, Y_divided),
+            case is_whole_then_divide(Y_i) of
+                %% If zero is returned, the whole number condition check failed
+                %% So don't add the factor
+                0 -&gt; sub_factoring(X_i + 1, Y_i, Factors); % y_i-1 - y_i-1/x_i
+                %% Else a whole number is returned, the counterpart factor to x_i where x_i * y_i = n!
+                %% Add the tuple pair to the factor list
+                Y_i_whole -&gt; sub_factoring(X_i + 1, Y_i, [{X_i, Y_i_whole}|Factors]) % y_i-1 - y_i-1/x_i
+            end;
+        %% Else return the Factors of N
+        _    -&gt; Factors
+    end.
+
+</pre>
+</div>
+
+<p>
+To maintain ultimate precision with no round off errors, it is necessary sometimes to use a fraction library.
+Currently the algorithm I use relies solely upon the fraction library to operate completely and exactly.
+In the future I will experiment and research a way to use floating-point arithmetic and division to speed up
+the process, but when I first tried, the round off errors were very great and difficult to know when to round and when
+not too. But with the fraction library, things work perfectly. A major limitation of using fractions for all the computations
+will be explained in the <b>Limitations</b> section.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-erlang">-author("Benjamin Hansen").
+-export([new/0,simp/1,add/2,add/3,sub/2,sub/3,divide/2,divide/3, mul/2, mul/3, eval/1, reciprocal/1, den_le_num/1, is_whole/1,is_whole_then_divide/1,
+         integer_divide_eval/1]).
+-import(primes, [mod/2]). %% Import mod for modulo arithmetic
+
+%% We will use a tuple of two to hold fractions
+new() -&gt; {}.
+
+%% todo
+simp(_) -&gt; mod(0, 1).
+
+%% Return whether the denominator is less than or equal the numerator
+den_le_num({Numerator, Denominator}) -&gt; Denominator =&lt; Numerator.
+
+%% Evaluates the fraction into a decimal
+eval({Numerator, Denominator}) -&gt;
+    Numerator / Denominator.
+
+%% Instead of using floating point division ('/'), use
+%% integer division to evaluated this fraction ('div')
+integer_divide_eval({Numerator, Denominator})-&gt;
+    Numerator div Denominator.
+
+%% What makes a fraction actually a whole number?
+%% The denominator divides the numerator
+is_whole({Numerator, Denominator})-&gt;
+    %% Return if the Numerator mod the Denominator is zero
+    Numerator rem Denominator == 0.
+
+%% This function combines the integer_divide_eval() and is_whole() functions
+%% to divide the fraction if it's a whole number or return zero to simulate error - not a whole number
+is_whole_then_divide(Fraction)-&gt;
+    case is_whole(Fraction) of
+        true -&gt; integer_divide_eval(Fraction);
+        _    -&gt; 0
+    end.
+
+%% Note: the basic, 2-argument arithmetic functions don't perform any simplification
+%% or eager evaluation. They perform the arithmetic as fast (the least amount of operations) as
+%% we know how.
+%% Also note, because this is inhouse (for now, I'm just using it) I want it to be quick. Therefore,
+%% no divide by zero error checking is made.
+%% Also, if fastest performance is desired, the basic 2-argument functions will produce fractions
+%% with a negative in the denominator or a negative on both sides of the divide. Call
+%% eager eval. methods to simplify the double negative.
+
+%% Take the reciprocal of the fraction
+reciprocal({Numerator, Denominator}) -&gt; {Denominator, Numerator}.
+
+%% Add two fractions together
+add({Numerator1, Denominator1}, {Numerator2, Denominator2}) -&gt;
+    %% First multiply the other fraction by the denominators in the form of 1
+    %% Example: 2/5 + 3/6 = 2/5(6/6) + 3/6(5/5) = 12/30 + 15/30 = 27/30 (which is equal to 9/10)
+    {(Numerator1 * Denominator2) + (Numerator2 * Denominator1), (Denominator1 * Denominator2)};
+%% {Integer, Fraction} version
+%% Adding integers makes it easy because the base stays the same
+add(Whole, {Numerator, Denominator}) -&gt;
+    %% 2 + 3/6 = 2(6/6) + 3/6 = 15/6 = 5/2
+    {(Whole * Denominator) + Numerator, Denominator};
+%% {Fraction, Integer} version
+%% Because addition is commutative, this is the same as the other way
+%% Commutative
+add({Numerator, Denominator}, Whole) -&gt;
+    %% 2 + 3/6 = 2(6/6) + 3/6 = 15/6 = 5/2
+    {(Whole * Denominator) + Numerator, Denominator}.
+add(_, _, eager) -&gt; 0.
+
+%% Subtract two fractions together
+sub({Numerator1, Denominator1}, {Numerator2, Denominator2}) -&gt;
+    %% First multiply the other fraction by the denominators in the form of 1
+    %% Example: 2/5 - 3/6 = 2/5(6/6) - 3/6(5/5) = 12/30 - 15/30 = -3/30 (which is equal to -1/10)
+    {(Numerator1 * Denominator2) - (Numerator2 * Denominator1), (Denominator1 * Denominator2)};
+%% {Integer, Fraction} version
+%% Subtracting integers makes it easy because the base stays the same
+%% Associative
+sub(Whole, {Numerator, Denominator}) -&gt;
+    %% 2 - 3/6 = 2(6/6) - 3/6 = 15/6 = 5/2
+    {(Whole * Denominator) - Numerator, Denominator};
+%% {Fraction, Integer} version
+sub({Numerator, Denominator}, Whole) -&gt;
+    %% 9/6 - 1 = 3/6 - 1(6/6) = -3/6 = -1/2
+    {Numerator - (Whole * Denominator), Denominator}.
+sub(_, _, _) -&gt; 0.
+
+%% Divide two fractions together
+divide({Numerator1, Denominator1}, {Numerator2, Denominator2}) -&gt;
+    %% Example: (2/5)/(3/6) = (2/5)*(6/3) = 18/15 (which is 6/5)
+    %% Do the swap and multiply all at once
+    {(Numerator1 * Denominator2), (Denominator1 * Numerator2)};
+
+%% {Integer, Fraction} version
+%% Dividing an integer with a fraction is weird but we can do it!
+divide(Whole, {Numerator, Denominator}) -&gt;
+    %% Example: 2 / (4/3) = 2(3/4) = 6/4 (which is 3/2) we take the reciprocal and multiply by a version of 1
+    %% Example: 8 / (5/7) = 8(7/5) = 63/5.
+    %% Do the reciprocal and multiply all at once
+    {(Whole * Denominator), Numerator};
+
+%% {Fraction, Integer} version
+%% Associative
+divide({Numerator, Denominator}, Whole) -&gt;
+    %% (3/6) / 2 = 3 / (6 * 2) = 3/12 = 1/4
+    {Numerator, (Denominator * Whole)}. %% The denominator gets bigger
+
+divide(_, _, _) -&gt; 0.
+
+%% Multiply two fractions together
+mul({Numerator1, Denominator1}, {Numerator2, Denominator2}) -&gt;
+    %% Example: (2/5)*(3/6) = 6/30 (which is 1/5)
+    {(Numerator1 * Numerator2), (Denominator1 * Denominator2)};
+
+%% {Integer, Fraction} version
+%% Multiply two fractions together
+mul(Integer, {Numerator, Denominator}) -&gt;
+    %% Example: 2*(3/6) = 6/6 (which is 1/5)
+    {Integer * Numerator, Denominator};
+
+%% {Fraction, Integer} version
+%% Multiply two fractions together
+%% Commutative
+mul({Numerator, Denominator}, Integer) -&gt;
+    %% Example: 2*(3/6) = 6/6 (which is 1/5)
+    {Integer * Numerator, Denominator}.
+
+mul(_, _, _) -&gt; 0.
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org40b3cac" class="outline-2">
+<h2 id="org40b3cac">Limitations</h2>
+<div class="outline-text-2" id="text-org40b3cac">
+<p>
+As we have already discussed, this algorithm I have presented is the slowest algorithm out of the 5 algorithms
+I have experimented with to compute factors of numbers. Why? Because it not only has many more arithmetic operations
+to perform at each loop, if we were to check if the fraction \(y_k\) was a factor of the number, we would have
+check if the numerator is divisible by the denominator, which is a modulo operation (slow in modern computing).
+If the remainder was zero, meaning the denominator can divide the numerator, then a integer division operation
+is needed to get the actual integer value of the fraction (not as slow as modulo but still slow compared to multiply
+or add operations). Thus, with the combination of many arithmetic operations to compute the next \(y_k\) and
+many operations to check if that \(y_k\) is a factor, this algorithm will be the slowest.
+</p>
+
+<p>
+Since I used a fraction library, I needed to exploit fractional arithmetic which you learn in Algebra classes that
+seems not too bad. But simplifying fractions takes many operations! Without realizing it, we were doing many
+operations in our head (or at least retrieving from our memory those operations). We gained an intuition into how to simplify arithmetic operations
+with fractions well, but the computer has to do all the steps your brain did subconsciously. So I tried to make my
+fraction library arithmetic operations as quick as possible - performing no optimizations or simplifications. As such,
+the denominators of each consecutive \(y_k\) got larger and larger, because instead of finding the greatest common divisor
+for a fraction subtraction, I just multiplied both fractions by the other fraction's denominator. This gave growth greater
+than factorial. Thus the denominators would increase like 1*2 = 2, 2*3 = 6, 6*2 = 12, 12*4 = 36, 36*4 = &#x2026; and the numbers got
+bigger and bigger. So, without performing any simplification to my fractions, my Erlang system couldn't factor a number above 109.
+</p>
+</div>
+</div>
+<div id="outline-container-org925ba6d" class="outline-2">
+<h2 id="org925ba6d">Conclusions</h2>
+<div class="outline-text-2" id="text-org925ba6d">
+<p>
+Though this theorem doesn't enhance the speedup of factoring algorithms, it gives us great insights into the relationships
+between factors, relationships between each integer below the square root of a number, and great insights into potential
+facts into the mystery into prime numbers. I believe this theorem when studied and thought about over a lifetime will give birth
+to quicker prime number arithmetic operations, a deeper mathematically understanding, and better algorithmic design.
+Just because an algorithm is slow and inefficient doesn't mean that is of no use. Each algorithm enhances our understanding
+of numbers and how they relate to each other. The very facts, axioms, and foundations of mathematics rely on simple
+arithmetic and factoring. The more we understand about those operations as well as high-level mathematics, the better
+citizens we will be. We will be more logical and reasonable. We will have better ideas and more insight. We will
+be able to solve problems faster than those around us. We will make the world a better place.
+</p>
+
+<p>
+Thank you for reading.
+</p>
+
+<p>
+Benjamin Hansen, April 2020, Brigham Young University - Idaho.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Benjamin Hansen</p>
+<p class="date">Created: 2020-04-01 Wed 19:02</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
